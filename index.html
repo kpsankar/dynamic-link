@@ -3,14 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Link Redirect</title>
+    <title>Redirecting...</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+        }
+        h2 {
+            color: #333;
+        }
+    </style>
 </head>
 <body>
-    <h2>Redirecting to the app...</h2>
+    <h2>Opening the app...</h2>
+
     <script>
-        // Define your App Links and Store Links
-        const androidAppLink = "intent://dynamic-link-a49.pages.dev#Intent;scheme=https;package=com.nokia.wifi;end";
-        const iosAppLink = "myapp://home";
+        // ==== Configuration ====
         const playStoreLink = "https://play.google.com/store/apps/details?id=com.nokia.wifi";
         const appStoreLink = "https://apps.apple.com/app/1345278192";
 
@@ -18,21 +31,21 @@
         const userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
         if (/android/i.test(userAgent)) {
-            // Try to open the Android App
-            window.location.href = androidAppLink;
+            console.log("Android device detected");
 
-            // If not installed, redirect to Play Store after 3 seconds
+            // Wait 3 seconds and then fallback to Play Store if app not opened
             setTimeout(() => {
                 window.location.href = playStoreLink;
             }, 3000);
-        } else if (/iPad|iPhone|iPod/.test(userAgent)) {
-            // Try to open the iOS App
-            window.location.href = iosAppLink;
 
-            // If not installed, redirect to App Store after 3 seconds
+        } else if (/iPad|iPhone|iPod/.test(userAgent)) {
+            console.log("iOS device detected");
+
+            // Wait 3 seconds and then fallback to App Store if app not opened
             setTimeout(() => {
                 window.location.href = appStoreLink;
             }, 3000);
+
         } else {
             alert("This link is intended for mobile devices.");
         }
