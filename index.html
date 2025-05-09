@@ -36,7 +36,7 @@
             // Wait 3 seconds and then fallback to Play Store if app not opened
             setTimeout(() => {
                 window.location.href = playStoreLink;
-            }, 3000);
+            }, 300);
 
         } else if (/iPad|iPhone|iPod/.test(userAgent)) {
             console.log("iOS device detected");
@@ -44,7 +44,7 @@
             // Wait 3 seconds and then fallback to App Store if app not opened
             setTimeout(() => {
                 window.location.href = appStoreLink;
-            }, 3000);
+            }, 300);
 
         } else {
             alert("This link is intended for mobile devices.");
