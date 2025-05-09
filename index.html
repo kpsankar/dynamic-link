@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecting...</title>
+    <title>Dynamic Link Redirect</title>
     <style>
         body {
             display: flex;
@@ -20,10 +20,12 @@
     </style>
 </head>
 <body>
-    <h2>Opening the app...</h2>
+    <h2>Redirecting to the app...</h2>
 
     <script>
         // ==== Configuration ====
+        const androidAppLink = "intent://dynamic-link-a49.pages.dev#Intent;scheme=https;package=com.nokia.wifi;end";
+        const universalLink = "https://dynamic-link-a49.pages.dev";
         const playStoreLink = "https://play.google.com/store/apps/details?id=com.nokia.wifi";
         const appStoreLink = "https://apps.apple.com/app/1345278192";
 
@@ -33,18 +35,24 @@
         if (/android/i.test(userAgent)) {
             console.log("Android device detected");
 
-            // Wait 3 seconds and then fallback to Play Store if app not opened
+            // Attempt to open the Android app
+            window.location.href = androidAppLink;
+
+            // If the app is not installed, redirect to Play Store after 2 seconds
             setTimeout(() => {
                 window.location.href = playStoreLink;
-            }, 200);
+            }, 2000);
 
         } else if (/iPad|iPhone|iPod/.test(userAgent)) {
             console.log("iOS device detected");
-        
-            // Wait 3 seconds and then fallback to App Store if app not opened
+
+            // Attempt to open the Universal Link
+            window.location.href = universalLink;
+
+            // If the app is not installed, redirect to App Store after 2 seconds
             setTimeout(() => {
                 window.location.href = appStoreLink;
-            }, 200);
+            }, 2000);
 
         } else {
             alert("This link is intended for mobile devices.");
