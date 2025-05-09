@@ -1,0 +1,11 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "SZCQM5438R.com.nokia.wifi",
+        "paths": [ "/home", "/profile/*" ]
+      }
+    ]
+  }
+}
