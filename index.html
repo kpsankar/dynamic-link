@@ -34,17 +34,19 @@
             console.log("Android device detected");
 
             // Wait 3 seconds and then fallback to Play Store if app not opened
-            setTimeout(() => {
-                window.location.href = playStoreLink;
-            }, 300);
+            // setTimeout(() => {
+            //     window.location.href = playStoreLink;
+            // }, 300);
+            window.location.href = playStoreLink;
 
         } else if (/iPad|iPhone|iPod/.test(userAgent)) {
             console.log("iOS device detected");
-
+        
             // Wait 3 seconds and then fallback to App Store if app not opened
-            setTimeout(() => {
-                window.location.href = appStoreLink;
-            }, 300);
+            // setTimeout(() => {
+            //     window.location.href = appStoreLink;
+            // }, 300);
+            window.location.href = appStoreLink;
 
         } else {
             alert("This link is intended for mobile devices.");
