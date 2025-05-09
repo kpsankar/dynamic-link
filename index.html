@@ -25,7 +25,6 @@
     <script>
         // ==== Configuration ====
         const androidAppLink = "intent://dynamic-link-a49.pages.dev#Intent;scheme=https;package=com.nokia.wifi;end";
-        const universalLink = "https://dynamic-link-a49.pages.dev";
         const playStoreLink = "https://play.google.com/store/apps/details?id=com.nokia.wifi";
         const appStoreLink = "https://apps.apple.com/app/1345278192";
 
@@ -45,9 +44,6 @@
 
         } else if (/iPad|iPhone|iPod/.test(userAgent)) {
             console.log("iOS device detected");
-
-            // Attempt to open the Universal Link
-            window.location.href = universalLink;
 
             // If the app is not installed, redirect to App Store after 2 seconds
             setTimeout(() => {
