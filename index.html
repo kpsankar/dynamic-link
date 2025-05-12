@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Link Redirect</title>
+    <title>Redirecting...</title>
     <style>
         body {
             display: flex;
@@ -20,52 +20,31 @@
     </style>
 </head>
 <body>
-    <h2>Redirecting to the app...</h2>
-
+    <h2>Opening the app...</h2>
     <script>
-        // ==== Configuration ====
-        const androidAppLink = "intent://dynamic-link-a49.pages.dev#Intent;scheme=https;package=com.nokia.wifi;end";
-        const playStoreLink = "https://play.google.com/store/apps/details?id=com.nokia.wifi";
         const appStoreLink = "https://apps.apple.com/app/1345278192";
-        const universalLink = "https://dynamic-link-a49.pages.dev/landing-page";
-
-        // Detect the platform
+        const playStoreLink = "https://play.google.com/store/apps/details?id=com.nokia.wifi";
         const userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
         if (/android/i.test(userAgent)) {
             console.log("Android device detected");
-
-            // Attempt to open the Android app
-            window.location.href = androidAppLink;
-
-            // If the app is not installed, redirect to Play Store after 2 seconds
+            window.location.href = "intent://dynamic-link-a49.pages.dev#Intent;scheme=https;package=com.nokia.wifi;end";
             setTimeout(() => {
                 window.location.href = playStoreLink;
             }, 2000);
-
         } else if (/iPad|iPhone|iPod/.test(userAgent)) {
-    console.log("iOS device detected");
-
-    // Attempt to open the Universal Link
-    window.location.href = universalLink;
-
-    // Set a timeout for App Store fallback
-    const timeout = setTimeout(() => {
-        console.log("App not opened, redirecting to App Store");
-        window.location.href = appStoreLink;
-    }, 2000);
-
-    // Listen for visibility changes
-    const clearOnVisibilityChange = () => {
-        if (document.hidden) {
-            console.log("App opened, clearing timeout");
-            clearTimeout(timeout);
-            document.removeEventListener('visibilitychange', clearOnVisibilityChange);
-        }
-    };
-
-    document.addEventListener('visibilitychange', clearOnVisibilityChange);
-} else {
+            console.log("iOS device detected");
+            // iOS will attempt to open the app automatically via the Universal Link
+            // If it fails, the user will remain on this page, and the fallback can occur.
+            setTimeout(() => {
+                // Fallback to App Store if the app doesn't open within a reasonable time
+                const isHidden = document.hidden || document.webkitHidden;
+                if (!isHidden) {
+                    console.log("App not opened, redirecting to App Store");
+                    window.location.href = appStoreLink;
+                }
+            }, 2000);
+        } else {
             alert("This link is intended for mobile devices.");
         }
     </script>
