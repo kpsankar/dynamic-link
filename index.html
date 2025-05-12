@@ -44,22 +44,28 @@
             }, 2000);
 
         } else if (/iPad|iPhone|iPod/.test(userAgent)) {
-            console.log("iOS device detected");
+    console.log("iOS device detected");
 
-            // Attempt to open the Universal Link
-            const timeout = setTimeout(() => {
-                console.log("App not opened, redirecting to App Store");
-                window.location.href = appStoreLink;
-            }, 2000);
+    // Attempt to open the Universal Link
+    window.location.href = universalLink;
 
-            window.addEventListener('pagehide', function () {
-                console.log("App opened, clearing timeout");
-                clearTimeout(timeout);
-            });
+    // Set a timeout for App Store fallback
+    const timeout = setTimeout(() => {
+        console.log("App not opened, redirecting to App Store");
+        window.location.href = appStoreLink;
+    }, 2000);
 
-            window.location.href = universalLink;
+    // Listen for visibility changes
+    const clearOnVisibilityChange = () => {
+        if (document.hidden) {
+            console.log("App opened, clearing timeout");
+            clearTimeout(timeout);
+            document.removeEventListener('visibilitychange', clearOnVisibilityChange);
+        }
+    };
 
-        } else {
+    document.addEventListener('visibilitychange', clearOnVisibilityChange);
+} else {
             alert("This link is intended for mobile devices.");
         }
     </script>
