@@ -1,14 +1,20 @@
 [
-  {
-    "relation": ["delegate_permission/common.handle_all_urls"],
-    "target": {
-      "namespace": "android_app",
-      "package_name": "com.nokia.wifi",
-      "sha256_cert_fingerprints": [
-        "17:D2:4F:76:22:5F:73:5B:B3:26:02:65:1E:E2:52:AB:40:40:DD:7D:F2:1A:3F:E9:CE:38:C6:C2:61:7B:2B:01"
-        "79:89:6C:1C:46:11:0B:61:D8:F9:1C:EC:84:8F:9D:77:D3:50:14:BA:4A:37:6D:68:03:3C:2E:32:20:81:B3:72"
-      ]
+    {
+        "relation":
+        [
+            "delegate_permission/common.handle_all_urls"
+        ],
+        "target":
+        {
+            "namespace": "android_app",
+            "package_name": "com.nokia.wifi",
+            "sha256_cert_fingerprints":
+            [
+                "94:5D:13:AC:78:13:58:95:28:13:92:7E:16:6C:66:CE:E5:F0:FA:34:05:40:7E:08:3D:6E:82:31:6C:A5:B3:7B",
+                "45:AE:DE:E4:21:9B:04:96:E4:91:F4:0C:58:29:F2:FC:E8:3B:A9:10:5C:D2:8B:85:B1:7F:AD:5A:4F:F1:9E:0D",
+                "85:A2:58:3B:30:47:F7:40:FE:DA:D3:3B:70:B3:6D:B2:92:9F:DA:5F:78:DE:5F:ED:D9:90:B6:CD:3D:2D:F7:4C",
+                "79:89:6C:1C:46:11:0B:61:D8:F9:1C:EC:84:8F:9D:77:D3:50:14:BA:4A:37:6D:68:03:3C:2E:32:20:81:B3:72"
+            ]
+        }
     }
-  }
 ]
-
