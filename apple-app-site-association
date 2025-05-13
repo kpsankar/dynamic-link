@@ -1,11 +1,18 @@
 {
-  "applinks": {
-    "apps": [],
-    "details": [
-      {
-        "appID": "SZCQM5438R.com.nokia.wifi",
-        "paths": ["*"]
-      }
-    ]
-  }
+    "applinks":
+    {
+        "apps":
+        [],
+        "details":
+        [
+            {
+                "appID": "SZCQM5438R.com.nokia.wifi",
+                "paths":
+                [
+                    "NOT /_/*",
+                    "/*"
+                ]
+            }
+        ]
+    }
 }
